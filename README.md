@@ -1,29 +1,37 @@
 # tibame_vite_template_back
 
-This template should help get you started developing with Vue 3 in Vite.
+使用vite+vue3+option API的後台範本
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+## 主要頁面
 
-## Customize configuration
+|- 登入
+|- 註冊
+|- 首頁
+    ｜- dashboard
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-## Project Setup
+## 安裝套件
 
-```sh
-npm install
-```
+1. sass/scss
 
-### Compile and Hot-Reload for Development
+    安裝 Sass（Syntactically Awesome Stylesheets）的 npm 套件，其中的 -D 選項表示將該套件安裝為專案的開發依賴（devDependency）。
 
-```sh
-npm run dev
-```
+    ```sh
+    npm install -D sass
+    ```
 
-### Compile and Minify for Production
+2. UI套件：view-ui-plus
 
-```sh
-npm run build
-```
+    ```sh
+    npm install view-ui-plus --save
+    ```
+
+3. Axios
+
+    用來發送 HTTP 請求，可以被用來替代 JavaScript 原生的 fetch 函數，並且提供了一些額外的功能和優勢。
+
+    ```sh
+    npm install axios
+    ```
+
