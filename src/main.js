@@ -4,9 +4,10 @@ import { createApp } from 'vue'
 import { createPinia } from 'pinia'
 
 import { 
-    Button, Table, Drawer,
+    Button, Table, Drawer, 
     Input,
-    Carousel, CarouselItem
+    Carousel, CarouselItem,
+    Card, Icon
 } from 'view-ui-plus'
 import 'view-ui-plus/dist/styles/viewuiplus.css'
 
@@ -24,5 +25,7 @@ vueApp.component('Drawer', Drawer)
 vueApp.component('Input', Input)
 vueApp.component('Carousel', Carousel)
 vueApp.component('CarouselItem', CarouselItem)
+vueApp.component('Card', Card)
+vueApp.component('Icon', Icon)
 
 vueApp.mount('#app')

@@ -19,6 +19,7 @@ apiInstance.interceptors.request.use(async (config) => {
     // const { getAccessTokenSilently } = useAuth0();
     // const accessToken = await getAccessTokenSilently();
     // config.headers['Authorization'] = accessToken;
+
     return config;
 }, (error) => {
     return Promise.reject(error)
