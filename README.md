@@ -35,3 +35,14 @@
     npm install axios
     ```
 
+4. [q](https://www.npmjs.com/package/qs)
+
+    ```sh
+    npm i qs
+    ```
+
+
+## 第三方登入
+
+### 1. Line
+    [圖文說明](https://fluff-budget-3b7.notion.site/Line-Login-e88fab6efa4e4abeb77e34a32a5b93eb?pvs=4)

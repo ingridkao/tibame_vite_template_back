@@ -1,6 +1,6 @@
 <template>
   <div class="management">
-    
+    會員管理
   </div>
 </template>
 

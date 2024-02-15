@@ -10,22 +10,12 @@
                     <MenuItem name="2">
                         <RouterLink to="/locomotive">Locomotive</RouterLink>
                     </MenuItem>
-                    <!-- <Submenu name="2">
-                        <template #title>
-                            other
-                        </template>
-                        <MenuItem name="2-1">
-                            <RouterLink to="/product">Product</RouterLink>
-                        </MenuItem>
-                        <MenuItem name="2-2">吼吼</MenuItem>
-                        <MenuItem name="2-3">哈哈</MenuItem>
-                    </Submenu>
                     <MenuItem name="3">
-                        <RouterLink to="/minimap">小地圖</RouterLink>
-                    </MenuItem>
+                        <RouterLink to="/products">商品管理</RouterLink>
+                    </MenuItem>  
                     <MenuItem name="4">
-                        <RouterLink to="/gsap">GSAP</RouterLink>
-                    </MenuItem> -->
+                        <RouterLink to="/user">會員管理</RouterLink>
+                    </MenuItem>  
                     <MenuItem name="5">
                         <Button v-if="token" @click="logout">登出</Button>
                         <RouterLink v-else to="/login">login</RouterLink>
@@ -42,21 +32,16 @@
                     <MenuItem name="1">
                         <RouterLink to="/">Dashboard</RouterLink>
                     </MenuItem>
-                    <!-- <MenuItem name="2">
-                        <RouterLink to="/about">About</RouterLink>
+                    <MenuItem name="2">
+                        <RouterLink to="/locomotive">Locomotive</RouterLink>
                     </MenuItem>
-                    <Submenu name="3">
-                        <template #title>
-                            其他
-                        </template>
-                        <MenuItem name="3-1">
-                            <RouterLink to="/product">Product</RouterLink>
-                        </MenuItem>
-                        <MenuItem name="3-2">吼吼</MenuItem>
-                        <MenuItem name="3-3">哈哈</MenuItem>
-                    </Submenu>
-                     -->
+                    <MenuItem name="3">
+                        <RouterLink to="/products">商品管理</RouterLink>
+                    </MenuItem>  
                     <MenuItem name="4">
+                        <RouterLink to="/user">會員管理</RouterLink>
+                    </MenuItem> 
+                    <MenuItem name="5">
                         <Button v-if="token" @click="logout">登出</Button>
                         <RouterLink v-else to="/login">login</RouterLink>
                     </MenuItem>
@@ -67,8 +52,9 @@
 </template>
 
 <script>
-import { RouterLink } from 'vue-router'
 import { Menu, MenuItem, Submenu} from 'view-ui-plus'
+
+import { RouterLink } from 'vue-router'
 import { mapState, mapActions } from 'pinia'
 import userStore from '@/stores/user'
 export default {
@@ -78,7 +64,7 @@ export default {
         MenuItem,
         Submenu
     },
-    data() {
+    data(){
         return {
             menuTarget: 0,
             drawerOpen: false
@@ -86,19 +72,24 @@ export default {
     },
     created(){
         // 判斷有沒有登入過
-        this.checkLogin()
+        const isLogin = this.checkLogin()
+        if(isLogin){
+            this.checkUserData()
+        }
     },
     computed: {
         //使用 mapState 輔助函數將/src/stores/user裡的state/data 映射在這裡
         // !!!要寫在computed
-        ...mapState(userStore, ['token'])
+        ...mapState(userStore, ['token', 'userData'])
     },
     methods:{
         //使用 mapActions 輔助函數將/src/stores/user裡的actions/methods 映射在這裡
-        ...mapActions(userStore, ['checkLogin', 'updateToken']),
+        ...mapActions(userStore, ['checkUserData', 'checkLogin', 'updateToken']),
         logout(){
             // 調用pinia的updateToken
             this.updateToken('')
+            // 轉到首頁
+            this.$router.push('/')
         }
     }
 };
@@ -137,11 +128,22 @@ export default {
             }
         }
     }
-    .logo{
-        width: 3rem;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    padding: 0 1rem;
+    .logo {
         height: 3rem;
-        background-color: #ddd;
-        border-radius: 50%;
+        display: block;
+        img{
+            width: 100%;
+            height: 100%;
+        }
     }
 }
 </style>
