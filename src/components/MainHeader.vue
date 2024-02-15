@@ -7,6 +7,9 @@
                     <MenuItem name="1">
                         <RouterLink to="/">Dashboard</RouterLink>
                     </MenuItem>
+                    <MenuItem name="2">
+                        <RouterLink to="/locomotive">Locomotive</RouterLink>
+                    </MenuItem>
                     <!-- <Submenu name="2">
                         <template #title>
                             other
@@ -102,9 +105,17 @@ export default {
 </script>
 
 <style lang="scss">
+.ivu-menu-light{
+    background-color: transparent;
+}
+.ivu-menu-horizontal.ivu-menu-light:after{
+    background: transparent;
+}
 .menu{
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
     &_desktop{
-        width: 100%;
         height: 4rem;
         padding: 0 1rem;
         display: flex;

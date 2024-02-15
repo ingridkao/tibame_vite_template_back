@@ -21,11 +21,12 @@ const router = createRouter({
           component: () => import('../views/DashboardView.vue'),
         },
         {
-          // 当 /dashboard 匹配成功
-          // dashboard 将被渲染到 home 的 <router-view> 内部
-          name: 'home',
-          path: 'dashboard',
-          component: () => import('../views/DashboardView.vue'),
+
+          // 当 /locomotive 匹配成功
+          // locomotive 将被渲染到 home 的 <router-view> 内部
+          path: 'locomotive',
+          name: 'locomotive',
+          component: () => import('../views/LocomotiveView.vue'),
         },
       ],
     },

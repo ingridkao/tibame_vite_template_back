@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import { mapActions } from 'pinia'
 import userStore from '@/stores/user'
 
@@ -45,28 +46,56 @@ export default {
   methods:{
     ...mapActions(userStore, ['updateToken', 'updateName', 'checkLogin', 'updateUserData']),
 
+    // login(){
+    //     const bodyFormData = new FormData();
+    //     bodyFormData.append('mem_account', this.account);
+    //     bodyFormData.append('mem_psw', this.au4a83);
+
+    //     // 請記得將php埋入跨域
+    //     apiInstance({
+    //         method: 'post',
+    //         url: '/getConfirmMember.php',
+    //         headers: { "Content-Type": "multipart/form-data" },
+    //         data: bodyFormData
+    //     }).then(res=>{
+    //         // console.log(res);
+    //         if(res && res.data){
+    //             if(res.data.code == 1){
+    //                 this.updateToken(res.data.session_id)
+    //                 this.updateUserData(res.data.memInfo)
+    //                 this.$router.push('/')
+
+    //             }else{
+    //                 alert('註冊失敗')
+    //             }
+    //         }
+    //     }).catch(error=>{
+    //         console.log(error);
+    //     })
+    // },
     login(){
-        const bodyFormData = new FormData();
-        bodyFormData.append('mem_account', this.account);
-        bodyFormData.append('mem_psw', this.au4a83);
-
-        // 請記得將php埋入跨域
-        apiInstance({
+        // fetch('https://fakestoreapi.com/auth/login',{
+        //     method:'POST',
+        //     body:JSON.stringify({
+        //         username: "mor_2314",
+        //         password: "83r5^_"
+        //     })
+        // })
+        // .then(res=>res.json())
+        // .then(json=>console.log(json))
+        axios({
             method: 'post',
-            url: '/getConfirmMember.php',
-            headers: { "Content-Type": "multipart/form-data" },
-            data: bodyFormData
+            url: 'https://fakestoreapi.com/auth/login',
+            data: {
+                username: "mor_2314",
+                password: "83r5^_"
+            }
         }).then(res=>{
-            // console.log(res);
+            console.log(res);
             if(res && res.data){
-                if(res.data.code == 1){
-                    this.updateToken(res.data.session_id)
-                    this.updateUserData(res.data.memInfo)
-                    this.$router.push('/')
-
-                }else{
-                    alert('註冊失敗')
-                }
+                this.updateToken(res.data.token)
+        //         this.updateUserData(res.data.memInfo)
+                this.$router.push('/')
             }
         }).catch(error=>{
             console.log(error);
